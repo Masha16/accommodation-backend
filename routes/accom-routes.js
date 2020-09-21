@@ -7,7 +7,7 @@ const Requests = require('../models/request-model')
 
 
 /* POST route to create a new accomodation */
-router.post('/accommodation', (req, res, next) => {
+router.post('/accommodationcreate', (req, res, next) => {
   const { postname, city, size, description } = req.body;
   Accom.create({
     postname,
@@ -15,7 +15,7 @@ router.post('/accommodation', (req, res, next) => {
     size,
     description,
     requests: [], 
-    owner: req.user._id
+    //owner: req.user._id
   })
     .then(response => {
       res.json(response);
@@ -57,7 +57,7 @@ router.get('/accommodation/:id', (req, res, next) => {
     });
 });
 
-// PUT route to update an accomodation post there 
+// PUT route to update an accommodation post there 
 
 router.put('/accommodation/:id', (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {

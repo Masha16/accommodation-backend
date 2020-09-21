@@ -24,10 +24,10 @@ router.get('/accommodation/:accomId/requests/:requestId', (req, res, next) => {
 router.post('/requests', (req, res, next) => {
   Requests.create({
     requestDesc: req.body.requestDesc,
-    accommodation: req.body.accomId
+    accommodation: req.body.accomID
   })
     .then(response => {
-      return Accom.findByIdAndUpdate(req.body.accomId, {
+      return Accom.findByIdAndUpdate(req.body.accomID, {
         $push: { requests: response._id }
       });
     })
