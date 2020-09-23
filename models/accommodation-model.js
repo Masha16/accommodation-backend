@@ -6,6 +6,7 @@ const accomSchema = new Schema({
   city: String,
   size: String,
   description: String,
+  price: String,
   requests: [{ type: Schema.Types.ObjectId, ref: 'Requests' }],
   owner: {type: Schema.Types.ObjectId, ref: 'User'}
 });

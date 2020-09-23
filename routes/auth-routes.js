@@ -3,6 +3,7 @@ const authRoutes = express.Router();
 const passport   = require('passport');
 const bcrypt     = require('bcryptjs');
 const User       = require('../models/user-model');
+const Accom = require('../models/accommodation-model');
  
  
 authRoutes.post('/signup', (req, res, next) => {
@@ -109,5 +110,29 @@ authRoutes.get('/loggedin', (req, res, next) => {
   }
   res.status(403).json({ message: 'Unauthorized' });
 });
- 
+
+authRoutes.get('/profile/:id', (req, res, next) => 
+    Accom.find()
+    .populate('user')
+    .then(accom => {
+        const userAccom=accom.map(e=> {
+            
+           if(e.owner==req.params.id) {
+            return e
+           }
+        })
+
+        
+
+       const filteredUserAccom =  userAccom.filter(element => element != null)
+       
+    res.json(filteredUserAccom)
+    
+    })
+    .catch(error => {
+      res.json(error);
+    })
+ )
+
+// req.params.id
 module.exports = authRoutes;

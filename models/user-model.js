@@ -4,7 +4,11 @@ const Schema   = mongoose.Schema;
 const userSchema = new Schema({
   email: String,
   username: String,
-  password: String
+  password: String, 
+  accommodation:[ {
+    type: Schema.Types.ObjectId,
+    ref: 'Accom'
+  }] 
 }, 
 {
   timestamps: true
