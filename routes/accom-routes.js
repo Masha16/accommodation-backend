@@ -8,7 +8,7 @@ const Requests = require('../models/request-model')
 
 /* POST route to create a new accomodation */
 router.post('/accommodationcreate', (req, res, next) => {
-  const { postname, city, size, description, price } = req.body;
+  const { postname, city, size, description, price, imageUrl} = req.body;
   Accom.create({
     postname,
     city,
@@ -16,7 +16,8 @@ router.post('/accommodationcreate', (req, res, next) => {
     description,
     price,
     requests: [], 
-    owner: req.user._id
+    owner: req.user._id, 
+    imageUrl,
   })
     .then(response => {
       res.json(response);

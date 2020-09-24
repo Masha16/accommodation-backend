@@ -40,10 +40,7 @@ app.use(
   })
 );
 
-app.use(cors({
-  // this could be multiple domains/origins, but we will allow just our React app
-  origin: [ "http://localhost:3000" ]
-}));
+
 
 // Middleware Setup
 app.use(logger('dev'));
@@ -65,6 +62,10 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
+app.use(cors({
+  // this could be multiple domains/origins, but we will allow just our React app
+  origin: [ "http://localhost:3000" ]
+}));
 
 app.use(session({
   secret:"some secret goes here",

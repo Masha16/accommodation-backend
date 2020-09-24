@@ -9,7 +9,8 @@ const accomSchema = new Schema({
   price: String,
   requests: [{ type: Schema.Types.ObjectId, ref: 'Requests' }],
   owner: {type: Schema.Types.ObjectId, ref: 'User'}, 
-  imageUrl: { type: String, required: true },
+  imageUrl: String,
+  likes: String,
 });
  
 const Accom = mongoose.model('Accom', accomSchema);
