@@ -16,7 +16,7 @@ require('./configs/passport');
 
 
 mongoose
-  .connect('mongodb://localhost/accommodation-backend', {
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost/accommodation-backend', {
     useFindAndModify: false,
     useCreateIndex: true,
     useNewUrlParser: true,
